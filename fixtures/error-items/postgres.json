@@ -1,0 +1,7 @@
+{
+  "_note": "Minimal shape observed on n8n 2.41.5 (11 and 13 Oct 2026). Values are synthetic. n8n adds other fields that were not recorded and are left out.",
+  "message": "relation \"missing_table\" does not exist",
+  "error": {
+    "description": "Failed query: SELECT 1 FROM missing_table"
+  }
+}

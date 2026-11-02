@@ -1,0 +1,4 @@
+{
+  "_note": "Shape observed on n8n 2.41.5 (11 and 13 Oct 2026): error is a plain string. The text is the one I saw for a missing id (404).",
+  "error": "The resource you are requesting could not be found"
+}

@@ -5,7 +5,7 @@
 [![n8n](https://img.shields.io/badge/n8n-workflow%20automation-orange)](https://n8n.io)
 [![Sources](https://img.shields.io/badge/Sources-Official%20n8n%20Docs-red)](https://docs.n8n.io)
 
-> A Claude agent skill that instantly diagnoses n8n workflow errors and gives you the exact fix — built entirely from official n8n documentation and verified community forum answers.
+> A Claude agent skill that instantly diagnoses n8n workflow errors and gives you the exact fix — `SKILL.md` is built from official n8n documentation and verified community forum answers, and `field-notes/` adds experiment-backed notes from a real self-hosted instance.
 
 No more spending 2 hours searching the n8n forum for a cryptic error message. Paste the error. Get the fix.
 
@@ -20,7 +20,7 @@ When you paste an n8n error message or describe a failing workflow, this skill:
 3. Gives you the precise fix — exact UI labels, environment variables, and code patterns
 4. Walks you through a 9-step diagnostic checklist if the error isn't immediately clear
 
-Every rule in this skill comes from official n8n documentation or community forum threads with official n8n support answers. No guessing. No hallucination.
+Every rule in `SKILL.md` comes from official n8n documentation or community forum threads with official n8n support answers. No guessing. No hallucination. The [field notes](field-notes/) are a different kind of evidence, and each one says so: experiments on a real instance, with the n8n version, the date and how it was proved.
 
 ---
 
@@ -38,6 +38,20 @@ Every rule in this skill comes from official n8n documentation or community foru
 | **Execution flow** | Node never runs, single bad item crashes all, parallel path merge issues |
 | **AI Agent errors** | Null prompt, Simple Memory node, Chat Model not connected, Gemini errors |
 | **Error handling** | Error Workflow setup, Stop And Error node, retry strategies, On Error options |
+
+---
+
+## Field notes (new in v0.2)
+
+Things that cost real time on a self-hosted n8n 2.41.5, each with the proof behind it:
+
+| # | Note | Type |
+|---|---|---|
+| 001 | [Error items have a different shape per node type](field-notes/001-error-item-shapes-per-node-type.md) | Experiment |
+| 002 | ["Continue" does not throw](field-notes/002-continue-on-error-does-not-throw.md) | Experiment + docs |
+| 003 | [Dead-man heartbeat for scheduled jobs](field-notes/003-dead-man-heartbeat-for-scheduled-jobs.md) | Pattern |
+
+The code in the notes is tested: `node --test` runs the fixtures in [`fixtures/`](fixtures/) (also in CI). For now the notes are reference material; wiring them into the skill itself comes after I have checked how the `npx skills add` installer treats extra files.
 
 ---
 
@@ -143,6 +157,9 @@ This skill was built by searching official n8n documentation using the `mcp__n8n
 ```
 n8n-error-debugger-skill/
 ├── SKILL.md          # Main skill file — 12 sections, 500+ lines, all sourced from official docs
+├── field-notes/      # Experiment-backed notes (version, date and proof on each)
+├── fixtures/         # Error-item shapes + a tested extractor (node --test)
+├── CHANGELOG.md
 ├── LICENSE           # MIT License
 └── README.md         # This file
 ```
@@ -160,6 +177,8 @@ When contributing, every fix must include:
 - A source URL (docs.n8n.io or community.n8n.io thread)
 
 No undocumented guesses accepted.
+
+A **field note** follows a different rule: show how you proved it (n8n version, date, steps) instead of a docs link. See [field-notes/README.md](field-notes/README.md).
 
 ---
 

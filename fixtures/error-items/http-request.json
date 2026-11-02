@@ -1,0 +1,8 @@
+{
+  "_note": "Minimal shape observed on n8n 2.41.5 (11 and 13 Oct 2026). Values are synthetic. The real item also has code and stack; they are left out.",
+  "error": {
+    "message": "422 - \"Unprocessable\"",
+    "name": "AxiosError",
+    "status": 422
+  }
+}
